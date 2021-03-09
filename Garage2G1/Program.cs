@@ -18,6 +18,7 @@ namespace Garage2G1
             Console.WriteLine($"Welcome to Victor's branch!");
             var meaning = 6 * 7;
             Console.WriteLine($"The meaning of lif is ${meaning}");
+            Console.WriteLine("nice2");
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
