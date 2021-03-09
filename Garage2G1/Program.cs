@@ -15,6 +15,7 @@ namespace Garage2G1
         {
             CreateHostBuilder(args).Build().Run();
             Console.WriteLine("nice");
+            Console.WriteLine("najs");
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
