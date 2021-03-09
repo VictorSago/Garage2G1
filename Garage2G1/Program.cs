@@ -14,11 +14,6 @@ namespace Garage2G1
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
-            Console.WriteLine("nice");
-            Console.WriteLine($"Welcome to Victor's branch!");
-            var meaning = 6 * 7;
-            Console.WriteLine($"The meaning of life is ${meaning}");
-            Console.WriteLine("nice2");
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
