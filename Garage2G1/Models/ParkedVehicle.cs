@@ -8,6 +8,8 @@ namespace Garage2G1.Models
     public class ParkedVehicle
     {
         public int Id { get; set; }
+
+        [Range(1, 5)]
         public VehicleType VehicleType { get; set; }
         public string RegNumber { get; set; }
         public string Color { get; set; }
