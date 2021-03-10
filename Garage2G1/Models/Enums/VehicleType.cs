@@ -10,7 +10,6 @@ namespace Garage2G1.Models
         None,
         Car,
         Bus,
-        Boat,
         Motorcycle,
         Plane
     }
