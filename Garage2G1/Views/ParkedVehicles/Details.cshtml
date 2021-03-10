@@ -56,7 +56,7 @@
             @Html.DisplayNameFor(model => model.ParkedTime)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ParkedTime)
+            <p>@Model.ParkedTime.ToString("dd\\:hh\\:mm\\:ss")</p>
         </dd>
     </dl>
 </div>

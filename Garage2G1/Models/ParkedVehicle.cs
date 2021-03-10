@@ -10,11 +10,6 @@ namespace Garage2G1.Models
     public class ParkedVehicle
     {
 
-        public ParkedVehicle()
-        {
-            ArrivalTime = DateTime.Now;
-        }
-
         public int Id { get; set; }
 
         [RequiredEnumAttribute]
@@ -39,9 +34,10 @@ namespace Garage2G1.Models
         [Range(0, int.MaxValue)]
         public int NumberOfWheels { get; set; }
         
-        [Display(Name = "Parked Time")]
+        [Display(Name = "Arrival Time")]
         public DateTime ArrivalTime { get; set; }
 
+        [Display(Name = "Total Time Parked")]
         public TimeSpan ParkedTime { 
             get 
             {
