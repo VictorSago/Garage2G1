@@ -39,7 +39,7 @@ namespace Garage2G1.Models
         [Range(0, int.MaxValue)]
         public int NumberOfWheels { get; set; }
         
-        [Display(Name = "Order Date")]
+        [Display(Name = "Parked Time")]
         public DateTime ArrivalTime { get; set; }
 
     }
