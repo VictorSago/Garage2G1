@@ -42,6 +42,13 @@ namespace Garage2G1.Models
         [Display(Name = "Parked Time")]
         public DateTime ArrivalTime { get; set; }
 
+        public TimeSpan ParkedTime { 
+            get 
+            {
+                return DateTime.Now - ArrivalTime;
+            }
+        }
+
     }
     
     
