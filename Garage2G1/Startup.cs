@@ -27,6 +27,11 @@ namespace Garage2G1
         {
             services.AddControllersWithViews();
 
+            // SQLServer option
+            // services.AddDbContext<ParkedVehicleContext>(options => 
+            //         options.UseSqlServer(Configuration.GetConnectionString("ParkedVehicleContext")).EnableSensitiveDataLogging());
+            
+            // SQLite option
             services.AddDbContext<ParkedVehicleContext>(options => 
                     options.UseSqlite(Configuration.GetConnectionString("ParkedVehicleContext")));
         }

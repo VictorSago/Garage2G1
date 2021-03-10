@@ -17,13 +17,4 @@ namespace Garage2G1.Models
         public DateTime ArrivalTime { get; set; }
 
     }
-    
-    public enum VehicleType
-    {
-        Car,
-        Bus,
-        Boat,
-        Motorcycle,
-        Plane
-    }
 }
