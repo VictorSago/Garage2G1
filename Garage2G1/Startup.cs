@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.TagHelpers;
 
 namespace Garage2G1
 {
@@ -28,6 +29,9 @@ namespace Garage2G1
             services.AddControllersWithViews();
 
             services.AddDbContext<ParkedVehicleContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ParkedVehicleContext")).EnableSensitiveDataLogging());
+        
+        
+        
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
