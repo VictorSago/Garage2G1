@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Garage2G1.Models.Attributes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace Garage2G1.Models
 
         public int Id { get; set; }
 
-        [Range(1, 5)]
+        [RequiredEnumAttribute]
         public VehicleType VehicleType { get; set; }
 
         [Required(AllowEmptyStrings = false)]
