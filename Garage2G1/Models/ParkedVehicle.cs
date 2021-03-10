@@ -8,6 +8,12 @@ namespace Garage2G1.Models
 {
     public class ParkedVehicle
     {
+
+        public ParkedVehicle()
+        {
+            ArrivalTime = DateTime.Now;
+        }
+
         public int Id { get; set; }
 
         [Range(1, 5)]
@@ -37,12 +43,5 @@ namespace Garage2G1.Models
 
     }
     
-    public enum VehicleType
-    {
-        Car,
-        Bus,
-        Boat,
-        Motorcycle,
-        Plane
-    }
+    
 }
