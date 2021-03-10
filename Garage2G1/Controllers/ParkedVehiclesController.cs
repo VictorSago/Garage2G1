@@ -56,6 +56,7 @@ namespace Garage2G1.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,VehicleType,RegNumber,Color,Brand,Model,NumberOfWheels,ArrivalTime")] ParkedVehicle parkedVehicle)
         {
+            parkedVehicle.ArrivalTime = DateTime.Now;
             if (ModelState.IsValid)
             {
                 db.Add(parkedVehicle);

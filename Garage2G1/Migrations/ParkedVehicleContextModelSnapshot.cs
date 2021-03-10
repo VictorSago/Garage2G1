@@ -26,18 +26,29 @@ namespace Garage2G1.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Brand")
+                        .IsRequired()
+                        .HasMaxLength(30)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Color")
+                        .IsRequired()
+                        .HasMaxLength(30)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Model")
+                        .IsRequired()
+                        .HasMaxLength(30)
                         .HasColumnType("TEXT");
 
                     b.Property<int>("NumberOfWheels")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("RegNumber")
+<<<<<<< HEAD
+=======
+                        .IsRequired()
+                        .HasMaxLength(6)
+>>>>>>> master
                         .HasColumnType("TEXT");
 
                     b.Property<int>("VehicleType")

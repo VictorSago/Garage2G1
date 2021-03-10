@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.TagHelpers;
 
 namespace Garage2G1
 {
@@ -30,7 +31,6 @@ namespace Garage2G1
             // SQLServer option
             // services.AddDbContext<ParkedVehicleContext>(options => 
             //         options.UseSqlServer(Configuration.GetConnectionString("ParkedVehicleContext")).EnableSensitiveDataLogging());
-            
             // SQLite option
             services.AddDbContext<ParkedVehicleContext>(options => 
                     options.UseSqlite(Configuration.GetConnectionString("ParkedVehicleContext")));
@@ -60,7 +60,7 @@ namespace Garage2G1
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=ParkedVehicles}/{action=Index}/{id?}");
             });
         }
     }

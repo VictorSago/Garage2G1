@@ -9,13 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Garage2G1.Migrations
 {
     [DbContext(typeof(ParkedVehicleContext))]
-<<<<<<< HEAD:Garage2G1/Migrations/20210310133347_SQLiteInitCreate.Designer.cs
-    [Migration("20210310133347_SQLiteInitCreate")]
-    partial class SQLiteInitCreate
-=======
-    [Migration("20210310092618_Init")]
-    partial class Init
->>>>>>> master:Garage2G1/Migrations/20210310092618_Init.Designer.cs.Backup-SQLServer
+    [Migration("20210310152202_SQLLiteInit2")]
+    partial class SQLLiteInit2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -33,18 +28,26 @@ namespace Garage2G1.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Brand")
+                        .IsRequired()
+                        .HasMaxLength(30)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Color")
+                        .IsRequired()
+                        .HasMaxLength(30)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Model")
+                        .IsRequired()
+                        .HasMaxLength(30)
                         .HasColumnType("TEXT");
 
                     b.Property<int>("NumberOfWheels")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("RegNumber")
+                        .IsRequired()
+                        .HasMaxLength(6)
                         .HasColumnType("TEXT");
 
                     b.Property<int>("VehicleType")
