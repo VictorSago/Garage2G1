@@ -9,13 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Garage2G1.Migrations
 {
     [DbContext(typeof(ParkedVehicleContext))]
-<<<<<<< HEAD:Garage2G1/Migrations/20210310133347_SQLiteInitCreate.Designer.cs
     [Migration("20210310133347_SQLiteInitCreate")]
     partial class SQLiteInitCreate
-=======
-    [Migration("20210310092618_Init")]
-    partial class Init
->>>>>>> master:Garage2G1/Migrations/20210310092618_Init.Designer.cs.Backup-SQLServer
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

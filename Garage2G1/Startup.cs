@@ -31,6 +31,7 @@ namespace Garage2G1
             // SQLServer option
             // services.AddDbContext<ParkedVehicleContext>(options => 
             //         options.UseSqlServer(Configuration.GetConnectionString("ParkedVehicleContext")).EnableSensitiveDataLogging());
+
             // SQLite option
             services.AddDbContext<ParkedVehicleContext>(options => 
                     options.UseSqlite(Configuration.GetConnectionString("ParkedVehicleContext")));

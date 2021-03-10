@@ -44,11 +44,8 @@ namespace Garage2G1.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("RegNumber")
-<<<<<<< HEAD
-=======
                         .IsRequired()
                         .HasMaxLength(6)
->>>>>>> master
                         .HasColumnType("TEXT");
 
                     b.Property<int>("VehicleType")
