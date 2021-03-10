@@ -12,7 +12,6 @@ namespace Garage2G1.Data
 
         public ParkedVehicleContext(DbContextOptions<ParkedVehicleContext> options) : base(options)
         {
-
         }
 
         public DbSet<ParkedVehicle> ParkedVehicle { get; set; }
