@@ -36,7 +36,6 @@ namespace Garage2G1.Models
         public int NumberOfWheels { get; set; }
 
         [Display(Name = "Arrival Time")]
-        //[Editable(false)]
         public DateTime ArrivalTime { get; set; }
 
         [Display(Name = "Total Time Parked")]
