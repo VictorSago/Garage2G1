@@ -54,9 +54,10 @@ namespace Garage2G1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,VehicleType,RegNumber,Color,Brand,Model,NumberOfWheels,ArrivalTime")] ParkedVehicle parkedVehicle)
+        public async Task<IActionResult> Create(ParkedVehicle parkedVehicle)
         {
             parkedVehicle.ArrivalTime = DateTime.Now;
+            //ALTER TABLE ADD(AGE number(3),COURSE varchar(40));
             if (ModelState.IsValid)
             {
                 db.Add(parkedVehicle);
@@ -87,7 +88,7 @@ namespace Garage2G1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,VehicleType,RegNumber,Color,Brand,Model,NumberOfWheels,ArrivalTime")] ParkedVehicle parkedVehicle)
+        public async Task<IActionResult> Edit(int id, ParkedVehicle parkedVehicle)
         {
             if (id != parkedVehicle.Id)
             {
@@ -98,6 +99,7 @@ namespace Garage2G1.Controllers
             {
                 try
                 {
+                    
                     db.Update(parkedVehicle);
                     await db.SaveChangesAsync();
                 }

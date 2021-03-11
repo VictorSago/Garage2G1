@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Garage2G1.Migrations
 {
-    public partial class Init : Migration
+    public partial class @new : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,10 +14,10 @@ namespace Garage2G1.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     VehicleType = table.Column<int>(type: "int", nullable: false),
-                    RegNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Color = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Brand = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Model = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RegNumber = table.Column<string>(type: "nvarchar(6)", maxLength: 6, nullable: false),
+                    Color = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    Brand = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    Model = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
                     NumberOfWheels = table.Column<int>(type: "int", nullable: false),
                     ArrivalTime = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
