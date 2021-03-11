@@ -1,4 +1,5 @@
 ﻿using Garage2G1.Models.Attributes;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -33,7 +34,7 @@ namespace Garage2G1.Models
 
         [Range(0, int.MaxValue)]
         public int NumberOfWheels { get; set; }
-        
+
         [Display(Name = "Arrival Time")]
         //[Editable(false)]
         public DateTime ArrivalTime { get; set; }
