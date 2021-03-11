@@ -54,7 +54,7 @@ namespace Garage2G1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,VehicleType,RegNumber,Color,Brand,Model,NumberOfWheels,ArrivalTime")] ParkedVehicle parkedVehicle)
+        public async Task<IActionResult> Create([Bind("Id,VehicleType,RegNumber,Color,Brand,Model,NumberOfWheels")] ParkedVehicle parkedVehicle)
         {
             parkedVehicle.ArrivalTime = DateTime.Now;
             if (ModelState.IsValid)
@@ -87,18 +87,19 @@ namespace Garage2G1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,VehicleType,RegNumber,Color,Brand,Model,NumberOfWheels,ArrivalTime")] ParkedVehicle parkedVehicle)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,VehicleType,RegNumber,Color,Brand,Model,NumberOfWheels")] ParkedVehicle parkedVehicle)
         {
             if (id != parkedVehicle.Id)
             {
                 return NotFound();
             }
-
+            
             if (ModelState.IsValid)
             {
                 try
                 {
                     db.Update(parkedVehicle);
+                    db.Entry(parkedVehicle).Property("ArrivalTime").IsModified = false;
                     await db.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
