@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Garage2G1.Data;
 using Garage2G1.Models;
+using Garage2G1.Models.ViewModel;
 
 namespace Garage2G1.Controllers
 {
@@ -20,9 +21,24 @@ namespace Garage2G1.Controllers
         }
 
         // GET: ParkedVehicles
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string RO = null)
         {
-            return View(await db.ParkedVehicle.ToListAsync());
+
+            var pv = db.ParkedVehicle.Select(p => new ParkedVehicleViewModel 
+            {
+                Id = p.Id,
+                VehicleType = p.VehicleType,
+                RegNumber = p.RegNumber,
+                Color = p.Color,
+                Brand = p.Brand,
+                Model = p.Model,
+                NumberOfWheels = p.NumberOfWheels,
+                ArrivalTime = p.ArrivalTime
+            });
+
+            if (RO != null) {pv = pv.Where(p => p.RegNumber.Contains(RO));}
+
+            return View(nameof(Index), await db.ParkedVehicle.ToListAsync());
         }
 
         // GET: ParkedVehicles/Details/5
