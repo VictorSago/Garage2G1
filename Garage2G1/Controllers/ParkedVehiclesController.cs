@@ -99,8 +99,14 @@ namespace Garage2G1.Controllers
             {
                 return NotFound();
             }
-            
-            if (ModelState.IsValid)
+
+            bool RegNumberExist = db.ParkedVehicle.Any(v => v.RegNumber.ToLower().Equals(parkedVehicle.RegNumber.ToLower()));
+
+            if (RegNumberExist)
+            {
+                ModelState.AddModelError(string.Empty, "Registration Number already exist.");
+            }
+            else if (ModelState.IsValid)
             {
                 try
                 {
