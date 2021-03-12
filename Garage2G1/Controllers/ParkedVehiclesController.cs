@@ -34,7 +34,7 @@ namespace Garage2G1.Controllers
             }
 
             var parkedVehicle = await db.ParkedVehicle
-                .FirstOrDefaultAsync(m => m.Id == id);
+                                        .FirstOrDefaultAsync(m => m.Id == id);
             if (parkedVehicle == null)
             {
                 return NotFound();
@@ -127,7 +127,7 @@ namespace Garage2G1.Controllers
             }
 
             var parkedVehicle = await db.ParkedVehicle
-                .FirstOrDefaultAsync(m => m.Id == id);
+                                        .FirstOrDefaultAsync(m => m.Id == id);
             if (parkedVehicle == null)
             {
                 return NotFound();
