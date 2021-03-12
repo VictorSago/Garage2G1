@@ -13,9 +13,11 @@ namespace Garage2G1.Models
 
         public int Id { get; set; }
 
+        [Display(Name = "Vehicle Type")]
         [RequiredEnumAttribute]
         public VehicleType VehicleType { get; set; }
 
+        [Display(Name = "Registration Number")]
         [Required(AllowEmptyStrings = false)]
         [StringLength(6)]
         public string RegNumber { get; set; }
@@ -32,10 +34,12 @@ namespace Garage2G1.Models
         [StringLength(30)]
         public string Model { get; set; }
 
+        [Display(Name = "No of Wheels")]
         [Range(0, int.MaxValue)]
         public int NumberOfWheels { get; set; }
 
         [Display(Name = "Arrival Time")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd, hh:mm}", ApplyFormatInEditMode = true)]
         public DateTime ArrivalTime { get; set; }
 
         [Display(Name = "Total Time Parked")]

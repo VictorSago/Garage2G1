@@ -21,15 +21,19 @@ namespace Garage2G1.Controllers
         }
 
         // GET: ParkedVehicles
-        public async Task<IActionResult> Index(string searchString)
+        public async Task<IActionResult> Index(string searchString, VehicleType? vehicleType)
         {
-            var parkedVehicles = from pv in db.ParkedVehicle select pv;
-            // var parkedVehicles = db.ParkedVehicle.Select(pv => pv);
+            // var parkedVehicles = from pv in db.ParkedVehicle select pv;
+            var parkedVehicles = db.ParkedVehicle.Select(pv => pv);
 
             if (!string.IsNullOrEmpty(searchString)) 
             {
                 parkedVehicles = parkedVehicles.Where(p => 
                                                 p.RegNumber.ToLower().Contains(searchString.ToLower()));
+            }
+            if (vehicleType is not null)
+            {
+                parkedVehicles = parkedVehicles.Where(p => p.VehicleType == vehicleType);
             }
 
             // return View(nameof(Index), await db.ParkedVehicle.ToListAsync());
