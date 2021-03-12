@@ -30,12 +30,12 @@ namespace Garage2G1
             services.AddControllersWithViews();
 
             // SQLServer option
-            services.AddDbContext<ParkedVehicleContext>(options => 
-                    options.UseSqlServer(Configuration.GetConnectionString("ParkedVehicleContext")).EnableSensitiveDataLogging());
+            // services.AddDbContext<ParkedVehicleContext>(options => 
+            //         options.UseSqlServer(Configuration.GetConnectionString("ParkedVehicleContext")).EnableSensitiveDataLogging());
 
             // SQLite option
-            // services.AddDbContext<ParkedVehicleContext>(options => 
-            //         options.UseSqlite(Configuration.GetConnectionString("ParkedVehicleContext")));
+            services.AddDbContext<ParkedVehicleContext>(options => 
+                    options.UseSqlite(Configuration.GetConnectionString("ParkedVehicleContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
