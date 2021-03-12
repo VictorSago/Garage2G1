@@ -54,11 +54,17 @@ namespace Garage2G1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,VehicleType,RegNumber,Color,Brand,Model,NumberOfWheels")] ParkedVehicle parkedVehicle)
+        public async Task<IActionResult> Create(ParkedVehicle parkedVehicle)
         {
-            parkedVehicle.ArrivalTime = DateTime.Now;
-            if (ModelState.IsValid)
+            bool RegNumberExist = db.ParkedVehicle.Any(v => v.RegNumber.ToLower().Equals(parkedVehicle.RegNumber.ToLower()));
+
+            if (RegNumberExist)
             {
+                ModelState.AddModelError(string.Empty, "Registration Number already exist.");
+            } 
+            else if (ModelState.IsValid)
+            {
+                parkedVehicle.ArrivalTime = DateTime.Now;
                 db.Add(parkedVehicle);
                 await db.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -87,7 +93,7 @@ namespace Garage2G1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,VehicleType,RegNumber,Color,Brand,Model,NumberOfWheels")] ParkedVehicle parkedVehicle)
+        public async Task<IActionResult> Edit(int id, ParkedVehicle parkedVehicle)
         {
             if (id != parkedVehicle.Id)
             {
