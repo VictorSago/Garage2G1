@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -21,7 +21,7 @@ namespace Garage2G1.Controllers
         }
 
         // GET: ParkedVehicles
-        public async Task<IActionResult> Index(string RO = null)
+        public async Task<IActionResult> Index(string ro = null)
         {
 
             var pv = db.ParkedVehicle.Select(p => new ParkedVehicleViewModel 
@@ -36,7 +36,10 @@ namespace Garage2G1.Controllers
                 ArrivalTime = p.ArrivalTime
             });
 
-            if (RO != null) {pv = pv.Where(p => p.RegNumber.Contains(RO));}
+            if (ro != null) 
+            {
+                pv = pv.Where(p => p.RegNumber.Contains(ro));
+            }
 
             return View(nameof(Index), await db.ParkedVehicle.ToListAsync());
         }
@@ -72,7 +75,9 @@ namespace Garage2G1.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(ParkedVehicle parkedVehicle)
         {
-            bool RegNumberExist = db.ParkedVehicle.Any(v => v.RegNumber.ToLower().Equals(parkedVehicle.RegNumber.ToLower()));
+            bool RegNumberExist = db.ParkedVehicle
+                                    .Any(v => 
+                                        v.RegNumber.ToLower().Equals(parkedVehicle.RegNumber.ToLower()));
 
             if (RegNumberExist)
             {
@@ -116,7 +121,11 @@ namespace Garage2G1.Controllers
                 return NotFound();
             }
 
-            bool RegNumberExist = db.ParkedVehicle.Any(v => v.RegNumber.ToLower().Equals(parkedVehicle.RegNumber.ToLower()));
+            bool RegNumberExist = db.ParkedVehicle
+                                    .Where(v => 
+                                        v.Id != parkedVehicle.Id)
+                                    .Any(v => 
+                                        v.RegNumber.ToLower().Equals(parkedVehicle.RegNumber.ToLower()));
 
             if (RegNumberExist)
             {
