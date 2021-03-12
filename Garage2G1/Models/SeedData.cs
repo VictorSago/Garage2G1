@@ -28,7 +28,9 @@ namespace Garage2G1.Models
                         Model = "600SL",
                         Color = "Blue",
                         NumberOfWheels = 4,
-                        ArrivalTime = DateTime.Now//.ToString("yyyy/MM/dd HH:mm:ss")
+                        // So that we have a variety of times in the DB
+                        ArrivalTime = DateTime.Parse("2021-03-10 10:00")
+                        // ArrivalTime = DateTime.Now//.ToString("yyyy/MM/dd HH:mm:ss")
                     },
                     new ParkedVehicle
                     {
@@ -38,7 +40,8 @@ namespace Garage2G1.Models
                         Model = "Testarosa",
                         Color = "Red",
                         NumberOfWheels = 4,
-                        ArrivalTime = DateTime.Now//.ToString("yyyy/MM/dd HH:mm:ss")
+                        ArrivalTime = DateTime.Parse("2021-03-10 22:00")
+                        // ArrivalTime = DateTime.Now//.ToString("yyyy/MM/dd HH:mm:ss")
                     },
                     new ParkedVehicle
                     {
@@ -48,7 +51,8 @@ namespace Garage2G1.Models
                         Model = "300K",
                         Color = "Yellow",
                         NumberOfWheels = 2,
-                        ArrivalTime = DateTime.Now//.ToString("yyyy/MM/dd HH:mm:ss")
+                        ArrivalTime = DateTime.Parse("2021-03-12 1:30")
+                        // ArrivalTime = DateTime.Now//.ToString("yyyy/MM/dd HH:mm:ss")
                     },
                     new ParkedVehicle
                     {
@@ -58,7 +62,8 @@ namespace Garage2G1.Models
                         Model = "XVB111",
                         Color = "White",
                         NumberOfWheels = 8,
-                        ArrivalTime = DateTime.Now//.ToString("yyyy/MM/dd HH:mm:ss")
+                        ArrivalTime = DateTime.Parse("2021-03-11 13:30")
+                        // ArrivalTime = DateTime.Now//.ToString("yyyy/MM/dd HH:mm:ss")
                     }
                 );
                 context.SaveChanges();

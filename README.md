@@ -10,7 +10,7 @@ The main branch of the program uses MS SQL Server as database, while the *__vict
 
 In order to use MS SQL Server the connection string in the `appsettings.json` looks as following:
 
-```
+```csharp
 "ConnectionStrings": {
   "ParkedVehicleContext": "Server=(localdb)\\mssqllocaldb;Database=ParkedVehicleContext;Trusted_Connection=True;MultipleActiveResultSets=true"
 }
@@ -18,8 +18,7 @@ In order to use MS SQL Server the connection string in the `appsettings.json` lo
 
  For SQLite the corresponding part of the `appsettings.json` has this connection string:
 
-
-```
+```json
 "ConnectionStrings": {
   "ParkedVehicleContext": "Data Source=ParkedVehicles.db"
 }
@@ -31,16 +30,16 @@ In case the current `appsettings.json` has the wrong connection string, rename i
 
 In the file `Startup.cs` the method `ConfigureServices` has the part that needs to be commented out or uncommented, depending on which database system is in use. For the MS SQL Server the lines that add the database context to the services look like this:
 
-```
+```csharp
 services.AddDbContext<ParkedVehicleContext>(options => 
          options.UseSqlServer(Configuration.GetConnectionString("ParkedVehicleContext")).EnableSensitiveDataLogging());
 ```
 
 For SQLite the same lines look in this way:
 
-```
+```csharp
 services.AddDbContext<ParkedVehicleContext>(options => 
          options.UseSqlite(Configuration.GetConnectionString("ParkedVehicleContext")));
-```                    
+```
 
 The inactive part is commented out.
