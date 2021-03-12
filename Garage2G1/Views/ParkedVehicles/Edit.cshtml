@@ -1,4 +1,4 @@
-﻿@model Garage2G1.Models.ParkedVehicle
+@model Garage2G1.Models.ParkedVehicle
 
 @{
     ViewData["Title"] = "Edit";
@@ -13,7 +13,7 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
-            <input type="hidden" asp-for="ArrivalTime" />
+            @* <input type="hidden" asp-for="ArrivalTime" /> *@
 
             <div class="form-group">
                 <label asp-for="VehicleType" class="control-label"></label>

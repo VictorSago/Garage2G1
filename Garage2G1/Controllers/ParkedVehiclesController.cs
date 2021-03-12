@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -50,7 +50,7 @@ namespace Garage2G1.Controllers
             }
 
             var parkedVehicle = await db.ParkedVehicle
-                .FirstOrDefaultAsync(m => m.Id == id);
+                                        .FirstOrDefaultAsync(m => m.Id == id);
             if (parkedVehicle == null)
             {
                 return NotFound();
@@ -70,11 +70,17 @@ namespace Garage2G1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create( ParkedVehicle parkedVehicle)
+        public async Task<IActionResult> Create(ParkedVehicle parkedVehicle)
         {
-            parkedVehicle.ArrivalTime = DateTime.Now;
-            if (ModelState.IsValid)
+            bool RegNumberExist = db.ParkedVehicle.Any(v => v.RegNumber.ToLower().Equals(parkedVehicle.RegNumber.ToLower()));
+
+            if (RegNumberExist)
             {
+                ModelState.AddModelError(string.Empty, "Registration Number already exist.");
+            } 
+            else if (ModelState.IsValid)
+            {
+                parkedVehicle.ArrivalTime = DateTime.Now;
                 db.Add(parkedVehicle);
                 await db.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -109,8 +115,14 @@ namespace Garage2G1.Controllers
             {
                 return NotFound();
             }
-            
-            if (ModelState.IsValid)
+
+            bool RegNumberExist = db.ParkedVehicle.Any(v => v.RegNumber.ToLower().Equals(parkedVehicle.RegNumber.ToLower()));
+
+            if (RegNumberExist)
+            {
+                ModelState.AddModelError(string.Empty, "Registration Number already exist.");
+            }
+            else if (ModelState.IsValid)
             {
                 try
                 {
@@ -143,7 +155,7 @@ namespace Garage2G1.Controllers
             }
 
             var parkedVehicle = await db.ParkedVehicle
-                .FirstOrDefaultAsync(m => m.Id == id);
+                                        .FirstOrDefaultAsync(m => m.Id == id);
             if (parkedVehicle == null)
             {
                 return NotFound();
