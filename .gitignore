@@ -363,7 +363,7 @@ MigrationBackup/
 FodyWeavers.xsd
 
 # Migrations in the local database
-Migrations/*
+Migrations/
 
 # Local SQLite database
 *.db
