@@ -23,7 +23,6 @@ namespace Garage2G1.Controllers
         // GET: ParkedVehicles
         public async Task<IActionResult> Index(string searchString, VehicleType? vehicleType)
         {
-            // var parkedVehicles = from pv in db.ParkedVehicle select pv;
             var parkedVehicles = db.ParkedVehicle.Select(pv => pv);
 
             if (!string.IsNullOrEmpty(searchString)) 
@@ -118,10 +117,10 @@ namespace Garage2G1.Controllers
             }
 
             bool RegNumberExist = db.ParkedVehicle
-                                    .Where(v => 
-                                        v.Id != parkedVehicle.Id)
                                     .Any(v => 
-                                        v.RegNumber.ToLower().Equals(parkedVehicle.RegNumber.ToLower()));
+                                        v.Id != parkedVehicle.Id && 
+                                        v.RegNumber.ToLower().Equals(parkedVehicle.RegNumber.ToLower())
+                                    );
 
             if (RegNumberExist)
             {
