@@ -12,6 +12,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Garage2G1.Models;
+using System.Runtime.InteropServices;
 
 namespace Garage2G1
 {
@@ -30,12 +31,24 @@ namespace Garage2G1
             services.AddControllersWithViews();
 
             // SQLServer option
-            services.AddDbContext<ParkedVehicleContext>(options => 
-                    options.UseSqlServer(Configuration.GetConnectionString("ParkedVehicleContext")).EnableSensitiveDataLogging());
+            // services.AddDbContext<ParkedVehicleContext>(options => 
+            //         options.UseSqlServer(Configuration.GetConnectionString("ParkedVehicleContext")).EnableSensitiveDataLogging());
 
             // SQLite option
             // services.AddDbContext<ParkedVehicleContext>(options => 
             //         options.UseSqlite(Configuration.GetConnectionString("ParkedVehicleContext")));
+
+            // If running on Windows - use SQLServer, otherwise - use SQLite
+            services.AddDbContext<ParkedVehicleContext>(options => {
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                {
+                    options.UseSqlServer(Configuration.GetConnectionString("SQLServerConnection"));
+                }
+                else
+                {
+                    options.UseSqlite(Configuration.GetConnectionString("SQLiteConnection"));
+                }
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

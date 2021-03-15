@@ -21,9 +21,9 @@ namespace Garage2G1.Controllers
         }
 
         // GET: ParkedVehicles
-        public async Task<IActionResult> Index(string ro = null)
+        public async Task<IActionResult> Index(string searchString, VehicleType? vehicleType)
         {
-
+            /* 
             var pv = db.ParkedVehicle.Select(p => new ParkedVehicleViewModel 
             {
                 Id = p.Id,
@@ -36,12 +36,24 @@ namespace Garage2G1.Controllers
                 ArrivalTime = p.ArrivalTime
             });
 
-            if (ro != null) 
+            if (!String.IsNullOrEmpty(searchString)) 
             {
-                pv = pv.Where(p => p.RegNumber.Contains(ro));
+                pv = pv.Where(p => p.RegNumber.Contains(searchString));
+            } */
+            var parkedVehicles = db.ParkedVehicle.Select(pv => pv);
+
+            if (!string.IsNullOrEmpty(searchString)) 
+            {
+                parkedVehicles = parkedVehicles.Where(p => 
+                                                p.RegNumber.ToLower().Contains(searchString.ToLower()));
+            }
+            if (vehicleType is not null)
+            {
+                parkedVehicles = parkedVehicles.Where(p => p.VehicleType == vehicleType);
             }
 
-            return View(nameof(Index), await db.ParkedVehicle.ToListAsync());
+            // return View(nameof(Index), await db.ParkedVehicle.ToListAsync());
+            return View(await parkedVehicles.ToListAsync());
         }
 
         // GET: ParkedVehicles/Details/5
@@ -122,9 +134,8 @@ namespace Garage2G1.Controllers
             }
 
             bool RegNumberExist = db.ParkedVehicle
-                                    .Where(v => 
-                                        v.Id != parkedVehicle.Id)
                                     .Any(v => 
+                                        v.Id != parkedVehicle.Id && 
                                         v.RegNumber.ToLower().Equals(parkedVehicle.RegNumber.ToLower()));
 
             if (RegNumberExist)
